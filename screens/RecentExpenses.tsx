@@ -8,6 +8,6 @@ export interface RecentExpensesProps extends React.PropsWithChildren {
 
 export const RecentExpenses:  React.FC<RecentExpensesProps> = (props) => {
     return (
-        <Text>All Expenses Screen</Text>
+        <Text>Recent Screen</Text>
     )
 }
