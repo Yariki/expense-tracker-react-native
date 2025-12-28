@@ -1,9 +1,10 @@
 import { View } from "react-native";
 import { ExpensesList } from "./ExpensesList";
 import { ExpensesSummary } from "./ExpensesSummary";
+import { Expense } from "../../models/Expense";
 
 export interface ExpensesOutputProps  extends React.ComponentProps<typeof View> {    
-    expenses: any[];
+    expenses: Expense[];
     expensesPeriod: string;
 }
 
@@ -11,6 +12,6 @@ export const ExpensesOutput:  React.FC<ExpensesOutputProps> = ({expenses, expens
 
     return <View>   
         <ExpensesSummary expenses={expenses} expensesPeriod={expensesPeriod} />
-        <ExpensesList />
+        <ExpensesList expenses={expenses} />
     </View>
 };

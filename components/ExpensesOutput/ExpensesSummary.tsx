@@ -1,7 +1,8 @@
 import { View, Text } from "react-native";
+import { Expense } from "../../models/Expense";
 
 export interface ExpensesSummaryProps  extends React.ComponentProps<typeof View> {
-    expenses: any[];
+    expenses: Expense[];
     expensesPeriod: string;
 }
 
