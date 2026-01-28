@@ -4,7 +4,7 @@ import { GlobalStyles } from "../../constans/styles";
 import { getFormattedDate } from "../../utils/date";
 import {useNavigation} from '@react-navigation/native';
 
-export interface ExpenseItemProps  extends React.ComponentProps<typeof View> {
+export interface ExpenseItemProps  extends React.ComponentProps<any> {
     expense: Expense;
 }   
 
@@ -13,7 +13,9 @@ export const ExpenseItem: React.FC<ExpenseItemProps> = ({expense}) => {
     const navigation = useNavigation();
 
     function expensePressHandler() {
-        navigation.navigate('ManageExpense');
+        navigation.navigate('ManageExpense',{
+            expenseId: expense.id
+        });
     }
 
     return <Pressable onPress={expensePressHandler} style={({pressed}) => pressed ? styles.pressed : undefined}>
