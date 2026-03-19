@@ -21,6 +21,6 @@ export const RecentExpenses:  React.FC<RecentExpensesProps> = (props) => {
     });
 
     return (
-        <ExpensesOutput expenses={expenses7DaysAgo} expensesPeriod='Last 7 days' ></ExpensesOutput>
+        <ExpensesOutput expenses={expenses7DaysAgo} expensesPeriod='Last 7 days' fallbackText='No expenses registered for the last 7 days.'></ExpensesOutput>
     )
 }

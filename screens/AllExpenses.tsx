@@ -13,6 +13,6 @@ export const AllExpenses:  React.FC<AllExpensesProps> = (props) => {
     const expensesCtx = useContext(ExpenseContext);
 
     return (
-        <ExpensesOutput expenses={expensesCtx.expenses} expensesPeriod='All Expenses' ></ExpensesOutput>
+        <ExpensesOutput expenses={expensesCtx.expenses} expensesPeriod='All Expenses' fallbackText='No registered expenses found.'></ExpensesOutput>
     )
 }

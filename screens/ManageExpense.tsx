@@ -1,8 +1,9 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useContext, useLayoutEffect } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { IconButton } from '../components/UI/IconButtun';
 import { GlobalStyles } from '../constans/styles';
 import { Button } from '../components/UI/Button';
+import { ExpenseContext } from '../store/ExpensesContext';
     
 
 export interface ManageExpenseProps extends React.ComponentProps<any> {
@@ -14,6 +15,7 @@ export const ManageExpense:  React.FC<ManageExpenseProps> = ({route, navigation}
 
     const expenseId = route.params?.expenseId;
     const isEditing = !!expenseId;
+    const expenseCtx = useContext(ExpenseContext);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -24,7 +26,8 @@ export const ManageExpense:  React.FC<ManageExpenseProps> = ({route, navigation}
 
     function deleteExpenseHandler() {
         console.log('Deleting expense...');
-         navigation.goBack();
+        expenseCtx.deleteExpense(expenseId);
+        navigation.goBack();
     }
 
     function cancelHandler() {
@@ -32,6 +35,20 @@ export const ManageExpense:  React.FC<ManageExpenseProps> = ({route, navigation}
     }
 
     function confirmHandler() {
+        if(isEditing) {
+            expenseCtx.updateExpense(expenseId,{
+                description: 'Test !!',
+                amount: 19.99,
+                date: new Date('2026-03-15')
+            });
+        }else {
+            expenseCtx.addExpense({
+                description: 'Test',
+                amount: 19.99,
+                date: new Date('2026-03-15')
+            });
+        }
+
          navigation.goBack();
     }
 
