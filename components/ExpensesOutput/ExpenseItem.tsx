@@ -14,7 +14,7 @@ export const ExpenseItem: React.FC<ExpenseItemProps> = ({expense}) => {
 
     function expensePressHandler() {
         navigation.navigate('ManageExpense',{
-            expenseId: expense.id
+            expenseId: expense ? expense.id : null
         });
     }
 
